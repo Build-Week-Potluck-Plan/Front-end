@@ -52,6 +52,7 @@ export default function Signup() {
                         <Form.Group id='password-confirm'>
                             <Form.Label>Password Confirmation</Form.Label>
                             <Form.Control type="password" ref={passwordConfirmRef} required />
+                            {/* emailRef, passwordRef, and passwordConfirmRef is so we can get the value when we submit our form */}
                         </Form.Group>
                         <Button disabled={loading} className='w-100' type='submit'>Sign Up</Button>
                     </Form>
@@ -64,9 +65,3 @@ export default function Signup() {
     )
 }
 
-// Notes
-
-/* 
-emailRef, passwordRef, and passwordConfirmRef is so we can get the value when we submit our form
-
-*/

@@ -34,6 +34,7 @@ function App() {
           <Route path='/create-an-event' component={CreateAnEvent} />
         </Switch>
       </AuthProvider>
+      {/* using exact so it will only match this path, otherwide it would be on every page since everything starts with / */}
     <Route exact path="/">
       <HomePage />
     </Route>
