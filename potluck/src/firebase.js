@@ -10,5 +10,8 @@ const app = firebase.initializeApp({
   appId: process.env.REACT_APP_FIREBASE_APP_ID
 })
 
+//made these on a local file 
+
+//gives us the authtication instance 
 export const auth = app.auth()
 export default app

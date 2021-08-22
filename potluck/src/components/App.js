@@ -18,14 +18,14 @@ function App() {
     <>
     <Navbar bg="primary" variant="dark">
       <Container>
-      <Navbar.Brand href="/">Potluck</Navbar.Brand>
-      <Nav className="me-auto">
-        <Nav.Link href="/create-an-event">Create an Event</Nav.Link>
-        <Nav.Link href="/food-list">Food List</Nav.Link>
-      </Nav>
-      <Nav>
-        <Nav.Link href="/user-dashboard">Dashboard</Nav.Link>
-      </Nav>
+        <Navbar.Brand href="/">Potluck</Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link href="/create-an-event">Create an Event</Nav.Link>
+          <Nav.Link href="/food-list">Food List</Nav.Link>
+        </Nav>
+        <Nav>
+          <Nav.Link href="/user-dashboard">Dashboard</Nav.Link>
+        </Nav>
       </Container>
     </Navbar>
       <AuthProvider>
@@ -34,16 +34,18 @@ function App() {
           <Route path='/create-an-event' component={CreateAnEvent} />
         </Switch>
       </AuthProvider>
-      <Route exact path="/">
-        <HomePage />
-      </Route>
+    <Route exact path="/">
+      <HomePage />
+    </Route>
       <Container 
         className='d-flex align-items-center justify-content-center'
         style={{minHeight: '100vh'}}
       >
-        <div className='w-100' style={{ maxWidth: '400px' }}>
+        {/* this makes sure that it will always be 400px, the wider it gets, it wont go over 400, and smaller adds padding to the sides */}
+        <div className='w-100' style={{ maxWidth: '400px' }}> 
           <Router>
             <AuthProvider>
+              {/* wrapped everything with AuthProvider to make sure we have access to that context  */}
               <Switch>
                 <PrivateRoute path ='/user-dashboard' component={Dashboard} />
                 <PrivateRoute path ='/update-profile' component={UpdateProfile} />

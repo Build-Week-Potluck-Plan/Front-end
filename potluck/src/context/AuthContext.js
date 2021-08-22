@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
     function signup (email, password) {
        return auth.createUserWithEmailAndPassword(email, password)
     }
-    // IF NOT USING FIREBASE CHANGE THE TOP LINE AND BOTTOM LINES OF CODE, REST OF APPLICATION WILL WORK FINE
+    // If not using firebase, change the top and bottom lines, the rest of the app will work
     function login (email, password) {
         return auth.signInWithEmailAndPassword(email,password)
     }
@@ -40,10 +40,12 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
           setCurrentUser(user)
-          setLoading(false)
+          setLoading(false) // when we have a user its done loading. 
+          // as soon as we get this first useeffect that runs, its checking to see if there is a user. 
         })
     
         return unsubscribe
+        //will only run when we mount or component
       }, [])
 
 
@@ -60,7 +62,8 @@ export function AuthProvider({ children }) {
     }
 
     
-
+        //checking down here to see if we are loading, otherwise we dont want it to run. if we are not loading, then we render out the children
+        //otherwise we dont want to render the children
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}

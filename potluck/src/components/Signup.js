@@ -14,16 +14,17 @@ export default function Signup() {
     const history = useHistory()
 
     async function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault() // prevents form from refreshing
 
         if(passwordRef.current.value !==
             passwordConfirmRef.current.value) {
                 return setError('Passwords do not match')
+                //we return bec we want to exit out of the func right away
             }
 
         try {
-            setError('')
-            setLoading(true)
+            setError('') // setting to empty string so we have no error
+            setLoading(true) // in case the user spams the button, this will prevent it from making multiple accounts
             await signup(emailRef.current.value, passwordRef.current.value)
             history.push('/')
         } catch {
@@ -62,3 +63,10 @@ export default function Signup() {
         </>
     )
 }
+
+// Notes
+
+/* 
+emailRef, passwordRef, and passwordConfirmRef is so we can get the value when we submit our form
+
+*/
