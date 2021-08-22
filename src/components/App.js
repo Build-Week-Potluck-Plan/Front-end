@@ -1,7 +1,7 @@
 import React from 'react'
 import Signup from './Signup'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import { Container, Navbar, Nav, Image } from 'react-bootstrap';
 import { AuthProvider } from '../context/AuthContext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Dashboard from './Dashboard'
@@ -18,7 +18,15 @@ function App() {
     <>
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand href="/">Potluck</Navbar.Brand>
+
+        <Navbar.Brand href="/">
+          <Image 
+            alt='potluck' 
+            src='https://notion-emojis.s3-us-west-2.amazonaws.com/v0/svg-twitter/1f958.svg'
+            style={{width: '40px', height: '40px', marginRight: '12px'}}
+            />
+          Potluck
+        </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="/create-an-event">Create an Event</Nav.Link>
           <Nav.Link href="/food-list">Food List</Nav.Link>
