@@ -9,6 +9,8 @@ import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import ForgotPassword from './ForgotPassword';
 import UpdateProfile from './UpdateProfile';
+import CreateAnEvent from './CreateEvent';
+import FoodList from './FoodList';
 
 function App() {
   return (
@@ -25,6 +27,14 @@ function App() {
       </Nav>
       </Container>
     </Navbar>
+    <Router>
+      <AuthProvider>
+        <Switch>
+          <Route path='/food-list' component={FoodList} />
+          <Route path='/create-an-event' component={CreateAnEvent} />
+        </Switch>
+      </AuthProvider>
+    </Router>
       <Container 
         className='d-flex align-items-center justify-content-center'
         style={{minHeight: '100vh'}}
