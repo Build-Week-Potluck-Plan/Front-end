@@ -1,9 +1,10 @@
 import React from 'react'
+import { Container } from 'react-bootstrap';
 
 export default function FoodList() {
     return (
-        <div>
+        <Container>
             Make a Food List Test
-        </div>
+        </Container>
     )
 }
