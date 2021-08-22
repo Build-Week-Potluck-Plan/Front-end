@@ -11,13 +11,14 @@ import ForgotPassword from './ForgotPassword';
 import UpdateProfile from './UpdateProfile';
 import CreateAnEvent from './CreateEvent';
 import FoodList from './FoodList';
+import HomePage from './HomePage';
 
 function App() {
   return (
     <>
     <Navbar bg="primary" variant="dark">
       <Container>
-      <Navbar.Brand href="/">PotLuck</Navbar.Brand>
+      <Navbar.Brand href="/">Potluck</Navbar.Brand>
       <Nav className="me-auto">
         <Nav.Link href="/create-an-event">Create an Event</Nav.Link>
         <Nav.Link href="/food-list">Food List</Nav.Link>
@@ -35,6 +36,11 @@ function App() {
         </Switch>
       </AuthProvider>
     </Router>
+    <Router>
+      <Route exact path="/">
+        <HomePage />
+      </Route>
+    </Router>
       <Container 
         className='d-flex align-items-center justify-content-center'
         style={{minHeight: '100vh'}}
@@ -43,7 +49,7 @@ function App() {
           <Router>
             <AuthProvider>
               <Switch>
-                <PrivateRoute exact path ='/user-dashboard' component={Dashboard} />
+                <PrivateRoute path ='/user-dashboard' component={Dashboard} />
                 <PrivateRoute path ='/update-profile' component={UpdateProfile} />
                 <Route path='/signup' component={Signup} />
                 <Route path='/login' component={Login} />
