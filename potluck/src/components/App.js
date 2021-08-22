@@ -28,19 +28,15 @@ function App() {
       </Nav>
       </Container>
     </Navbar>
-    <Router>
       <AuthProvider>
         <Switch>
           <Route path='/food-list' component={FoodList} />
           <Route path='/create-an-event' component={CreateAnEvent} />
         </Switch>
       </AuthProvider>
-    </Router>
-    <Router>
       <Route exact path="/">
         <HomePage />
       </Route>
-    </Router>
       <Container 
         className='d-flex align-items-center justify-content-center'
         style={{minHeight: '100vh'}}
