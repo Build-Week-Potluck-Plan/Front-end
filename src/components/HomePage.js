@@ -6,6 +6,7 @@ import { Container, Card, Button } from 'react-bootstrap';
 export default function HomePage() {
     return (
             <>
+            <Container>
             <Card style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Card.Img style={{width: '50%', }} variant="left" src="https://cdn.shopify.com/s/files/1/0085/5484/0141/files/potluck4_grande.jpg?v=1589822887" />
                 <Card.Body style={{padding: '0.5em 1.2em', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -26,6 +27,7 @@ export default function HomePage() {
                     <Button href="/create-an-event" variant="primary" style={{textAlign: 'center'}}>Start here!</Button>
                 </Card.Body>
             </Card>
+            </Container>
             </>
     )
 }
