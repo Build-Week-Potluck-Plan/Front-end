@@ -24,7 +24,7 @@ function App() {
           <Image 
             alt='potluck' 
             src='https://notion-emojis.s3-us-west-2.amazonaws.com/v0/svg-twitter/1f958.svg'
-            style={{width: '40px', height: '40px', marginRight: '12px'}}
+            style={{width: '40px', height: '40px', marginRight: '11px'}}
             />
           Potluck
         </Navbar.Brand>
