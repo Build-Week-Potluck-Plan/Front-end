@@ -13,12 +13,13 @@ import CreateAnEvent from './CreateEvent';
 import FoodList from './FoodList';
 import HomePage from './HomePage';
 
+
+
 function App() {
   return (
     <>
     <Navbar bg="primary" variant="dark">
       <Container>
-
         <Navbar.Brand href="/">
           <Image 
             alt='potluck' 
@@ -38,14 +39,11 @@ function App() {
     </Navbar>
       <AuthProvider>
         <Switch>
+          <Route exact path='/' component={HomePage} />
           <Route path='/food-list' component={FoodList} />
           <Route path='/create-an-event' component={CreateAnEvent} />
         </Switch>
       </AuthProvider>
-      {/* using exact so it will only match this path, otherwide it would be on every page since everything starts with / */}
-    <Route exact path="/">
-      <HomePage />
-    </Route>
       <Container 
         className='d-flex align-items-center justify-content-center'
         style={{minHeight: '100vh'}}
