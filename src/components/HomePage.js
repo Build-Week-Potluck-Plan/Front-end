@@ -24,7 +24,7 @@ export default function HomePage() {
                     <Card.Text style={{width: '95%'}}>
                         Have you ever wanted to host a potluck, but don't know where to start? Would you like to get together for some good food and fantastic company? Here at Potluck, we make organzing a potluck event as easy as pie.
                     </Card.Text>
-                    <Button href="/create-an-event" variant="primary" style={{textAlign: 'center'}}>Start here!</Button>
+                    <Button href="/create-an-event" to="/create-an-event" variant="primary" style={{textAlign: 'center'}}>Start here!</Button>
                 </Card.Body>
             </Card>
             </Container>
