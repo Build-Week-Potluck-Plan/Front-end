@@ -1,10 +1,12 @@
 // import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
-import { appetizers } from './ListItems/appetizers';
-import { entrees } from './ListItems/entrees';
-import { desserts } from './ListItems/desserts';
-import { drinks } from './ListItems/drinks';
-import { alcohol } from './ListItems/alcohol';
+import FromPropertyDescriptor from 'es-abstract/5/FromPropertyDescriptor';
+import { Card, Container, Form } from 'react-bootstrap';
+import './FoodList.css'
+// import { appetizers } from './ListItems/appetizers';
+// import { entrees } from './ListItems/entrees';
+// import { desserts } from './ListItems/desserts';
+// import { drinks } from './ListItems/drinks';
+// import { alcohol } from './ListItems/alcohol';
 
 
 // const initialFoodValues = {
@@ -39,6 +41,8 @@ import { alcohol } from './ListItems/alcohol';
 //     winecooler: '',
 // }
 
+
+
 export default function FoodList() {
 
 
@@ -47,108 +51,72 @@ export default function FoodList() {
         <Container>
             Make a Food List Test
 
-            <div className="Appetizers">
-                <h3>Select an appetizer</h3>
-                <ul className="appetizer-list">
-                    {appetizers.map(({ name }, index) => {
-                        return (
-                            <li key={index}>
+            <Form>
 
-                                <input
-                                    type="checkbox"
-                                    id={`custom-checkbox-${index}`}
-                                    name={name}
-                                />
-                                <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                            </li>
-                        )
-                    })}
-                </ul>
-
-                <div className="Entrees">
-                    <h3>Select an entree</h3>
-                    <ul className="entree-list">
-                        {entrees.map(({ name }, index) => {
-                            return (
-                                <li key={index}>
-
-                                    <input
-                                        type="checkbox"
-                                        id={`custom-checkbox-${index}`}
-                                        name={name}
-                                    />
-                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                                </li>
-                            )
-                        })}
-                    </ul>
-
-
+                <div className="buttonHeader">
+                    <h2>What will you bring?</h2>
                 </div>
 
-                <div className="Dessert">
-                    <h3>Select a dessert</h3>
-                    <ul className="dessert-list">
-                        {desserts.map(({ name }, index) => {
-                            return (
-                                <li key={index}>
+                <div className="radioButtons">
+                    <label> Appetizers
+                        <input
+                            type="radio"
+                            name="appetizers"
+                        />
+                    </label>
 
-                                    <input
-                                        type="checkbox"
-                                        id={`custom-checkbox-${index}`}
-                                        name={name}
-                                    />
-                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                    <label> Entrees
+                        <input
+                            type="radio"
+                            name="entrees"
+                        />
+                    </label>
 
+                    <label> Dessert
+                        <input
+                            type="radio"
+                            name="dessert"
+                        />
+                    </label>
 
+                    <label> Non-Alcoholic Drinks
+                        <input
+                            type="radio"
+                            name="drinks"
+                        />
+                    </label>
+
+                    <label> Alcoholic Drinks
+                        <input
+                            type="radio"
+                            name="alcohol"
+                        />
+                    </label>
                 </div>
 
-                <div className="Drinks">
-                    <h3>Select a drink</h3>
-                    <ul className="drinks-list">
-                        {drinks.map(({ name }, index) => {
-                            return (
-                                <li key={index}>
-
-                                    <input
-                                        type="checkbox"
-                                        id={`custom-checkbox-${index}`}
-                                        name={name}
-                                    />
-                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                                </li>
-                            )
-                        })}
-                    </ul>
-
-
+                {/* <div className="textHeader">
+                    <h2>Specify what you are bringing</h2>
                 </div>
 
-                <div className="Alcohol">
-                    <h3>Select Alcohol</h3>
-                    <ul className="alcohol-list">
-                        {alcohol.map(({ name }, index) => {
-                            return (
-                                <li key={index}>
-
-                                    <input
-                                        type="checkbox"
-                                        id={`custom-checkbox-${index}`}
-                                        name={name}
-                                    />
-                                    <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                                </li>
-                            )
-                        })}
-                    </ul>
+                <div className="textBox">
+                <label> 
+                    <input 
+                    type="text"
+                    name="description"
+                    />
+                </label>
+                </div> */}
 
 
-                </div>
-            </div>
+
+                <Form.Group className="textBox">
+                    <Card.Title>
+                        <Card.Text style={{fontsize:'25px',}}>Specify what you are bringing</Card.Text>
+                    </Card.Title>
+                    <Form.Control type="text" placeholer="Enter dish here" />
+                </Form.Group>
+            </Form>
+
         </Container>
     )
 }
