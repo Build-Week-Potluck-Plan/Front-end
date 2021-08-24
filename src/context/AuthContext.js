@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
     const [ loading, setLoading ] = useState(true)
 
 
-    function signup (email, password) {
+    function signup (email, password, username, name ) {
        return auth.createUserWithEmailAndPassword(email, password)
     }
     // If not using firebase, change the top and bottom lines, the rest of the app will work

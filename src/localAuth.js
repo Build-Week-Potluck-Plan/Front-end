@@ -1,18 +1,23 @@
-const createUserWithEmailAndPassword = () => {
+const createUserWithEmailAndPassword = (email, password) => {
 
 };
-const signInWithEmailAndPassword = () => {
+
+const signInWithEmailAndPassword = (email, password) => {
 
 };
+
 const signOut = () => {
 
 };
-const updateEmail = () => {
+
+const updateEmail = (email) => {
 
 };
-const updatePassword = () => {
+
+const updatePassword = (password) => {
 
 };
+
 const auth = {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
