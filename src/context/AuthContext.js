@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { auth } from '../firebase'
+import React, { useContext, useState, useEffect } from "react";
+import auth from "../localAuth";
 
 const AuthContext = React.createContext()
 
@@ -25,28 +25,25 @@ export function AuthProvider({ children }) {
         return auth.signOut()
     }
 
-    function resetPassword (email) {
-        return auth.sendPasswordResetEmail(email)
-    }
-
     function updateEmail (email) {
-        return currentUser.updateEmail(email)
+        return auth.updateEmail(email)
     }
 
     function updatePassword (password) {
-        return currentUser.updatePassword(password)
+        return auth.updatePassword(password)
     }
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-          setCurrentUser(user)
-          setLoading(false) // when we have a user its done loading. 
-          // as soon as we get this first useeffect that runs, its checking to see if there is a user. 
-        })
+    // useEffect(() => {
+    //     const unsubscribe = auth.onAuthStateChanged(user => {
+    //       setCurrentUser(user)
+    //       setLoading(false) // when we have a user its done loading. 
+    //       // as soon as we get this first useeffect that runs, its checking to see if there is a user. 
+    //     })
     
-        return unsubscribe
-        //will only run when we mount or component
-      }, [])
+    //     return unsubscribe
+    //     //will only run when we mount or component
+    //   }, [])
+    // Klove: I don't think we need this, let me know if anything breaks.
 
 
 
