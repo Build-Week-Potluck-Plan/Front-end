@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -14,7 +15,7 @@ export default function HomePage() {
                     <Card.Text style={{width: '95%'}}>
                         You’ve heard of tough luck, blind luck, and beginner’s luck, but the best luck of all is… POT-Luck! We make hosting potluck events simple. Sign up now and get started with coordinating your event!
                     </Card.Text>
-                    <Button href="/signup" variant="primary" style={{textAlign: 'center'}}>Sign up!</Button>
+                    <Button  as={Link} to="/signup" variant="primary" style={{textAlign: 'center'}}>Sign up!</Button>
                 </Card.Body>
             </Card>
             <Card style={{flexDirection: 'row-reverse', alignItems: 'center',}}>
@@ -24,7 +25,7 @@ export default function HomePage() {
                     <Card.Text style={{width: '95%'}}>
                         Have you ever wanted to host a potluck, but don't know where to start? Would you like to get together for some good food and fantastic company? Here at Potluck, we make organzing a potluck event as easy as pie.
                     </Card.Text>
-                    <Button href="/create-an-event" to="/create-an-event" variant="primary" style={{textAlign: 'center'}}>Start here!</Button>
+                    <Button as={Link} to="/create-an-event" variant="primary" style={{textAlign: 'center'}}>Start here!</Button>
                 </Card.Body>
             </Card>
             </Container>
