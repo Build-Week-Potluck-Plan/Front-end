@@ -1,0 +1,7 @@
+.radioButtons {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    font-size: 15px;
+}
+
