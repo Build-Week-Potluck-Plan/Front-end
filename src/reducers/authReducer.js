@@ -15,6 +15,8 @@ const reducer = (state = initialState, action) => {
 		case LOGIN_SUCCESS: {
 			console.log(action.payload)
 			localStorage.setItem('token', action.payload.token)
+			localStorage.setItem('id', action.payload.user_id)
+
 			return {
 				...state,
 				token: action.payload.token,
@@ -29,12 +31,16 @@ const reducer = (state = initialState, action) => {
 
 		case LOGOUT: {
 			localStorage.removeItem('token')
+			localStorage.removeItem('id')
+
 			return { ...state, token: null }
 		}
 		default:
-			// const USER_CURRENT_TOKEN = localStorage.getItem('token')
-			// return { ...state, token: USER_CURRENT_TOKEN }
-			return state
+			const token = localStorage.getItem('token')
+			const id = localStorage.getItem('id')
+
+			return { ...state, token: token, user_id: id }
+		// return state
 	}
 }
 export default reducer
