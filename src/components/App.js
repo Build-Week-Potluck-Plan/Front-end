@@ -43,8 +43,8 @@ function App() {
 			</Navbar>
 
 			<Switch>
-				{/* <PrivateRoute path='/user-dashboard' component={Dashboard} />
-				<PrivateRoute path='/update-profile' component={UpdateProfile} /> */}
+				<PrivateRoute path='/user-dashboard' component={Dashboard} />
+				<PrivateRoute path='/update-profile' component={UpdateProfile} />
 				<Route path='/signup' component={Signup} />
 				<Route path='/login' component={Login} />
 				<Route path='/forgot-password' component={ForgotPassword} />

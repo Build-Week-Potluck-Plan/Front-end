@@ -1,26 +1,31 @@
 import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { login } from '../actions/authActions'
+import axios from 'axios'
+//getUser reducer
+const initialCredentials = {
+	username: 'nicco',
+	password: 'nicco1234',
+}
 
-export default function Login() {
+const Login = props => {
+	const [credentials, setCredentials] = useState(initialCredentials)
+
 	const emailRef = useRef()
 	const passwordRef = useRef()
-	const { login } = useState()
+	// const { login } = useState()
 	const [error, setError] = useState('')
 	const [loading, setLoading] = useState(false)
 	const history = useHistory()
 
 	async function handleSubmit(e) {
 		e.preventDefault()
-
-		try {
-			setError('')
-			setLoading(true)
-			await login(emailRef.current.value, passwordRef.current.value)
-			history.push('/') // after we log in, this will bring us to the dashboard page
-		} catch {
-			setError('Failed to login')
-		}
+		setLoading(true)
+		setError('')
+		props.login(credentials)
+		history.push('/')
 
 		setLoading(false)
 	}
@@ -34,7 +39,7 @@ export default function Login() {
 					<Form onSubmit={handleSubmit}>
 						<Form.Group id='email'>
 							<Form.Label>Email</Form.Label>
-							<Form.Control type='email' ref={emailRef} required />
+							<Form.Control type='email' ref={emailRef} />
 						</Form.Group>
 						<Form.Group id='password'>
 							<Form.Label>Password</Form.Label>
@@ -55,3 +60,13 @@ export default function Login() {
 		</>
 	)
 }
+function mapStateToProps(state) {
+	return {
+		username: state.username,
+		password: state.password,
+		error: state.error,
+		token: state.token,
+	}
+}
+
+export default connect(mapStateToProps, { login })(Login)
