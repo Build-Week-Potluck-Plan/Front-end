@@ -1,7 +1,47 @@
-.radioButtons {
-    display: flex;
-    justify-content: center;
-    justify-content: space-evenly;
-    font-size: 15px;
+
+
+/* .rowOne {
+   display: flex;
+   justify-content: center;
+   justify-content: space-evenly;
 }
 
+.rowTwo {
+    margin-top: 10px;
+   margin-left: 
+    display: flex;
+   justify-content: center;
+   justify-content: space-between; 
+ } 
+
+ .rowThree {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+ } */
+ 
+ .radioButtons {
+    margin-top: 30px;
+     display: flex;
+     flex-direction: column;
+     font-size: 20px;
+ }
+ 
+ .rowOne {
+     display: flex;
+     justify-content: center;
+     justify-content: space-evenly;
+    }
+
+    .rowTwo {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        justify-content: space-evenly;
+       }
+
+       .submit {
+          margin-top: 30px;
+          text-align: center;
+       }
+   
