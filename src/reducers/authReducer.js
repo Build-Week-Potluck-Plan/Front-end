@@ -1,14 +1,13 @@
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../actions/authActions'
 
 const initialState = {
-	username: '',
-
 	token: null,
+	user_id: null,
 	error: null,
 	isLoading: false,
 }
 
-export default function Reducer(state = initialState, action) {
+const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGIN_START: {
 			return { ...state, isLoading: true, error: null }
@@ -19,6 +18,7 @@ export default function Reducer(state = initialState, action) {
 			return {
 				...state,
 				token: action.payload.token,
+				user_id: action.payload.user_id,
 				isLoading: false,
 				error: null,
 			}
@@ -28,11 +28,13 @@ export default function Reducer(state = initialState, action) {
 		}
 
 		case LOGOUT: {
+			localStorage.removeItem('token')
 			return { ...state, token: null }
 		}
-		default: {
-			const USER_CURRENT_TOKEN = localStorage.getItem('token')
-			return { ...state, token: USER_CURRENT_TOKEN }
-		}
+		default:
+			// const USER_CURRENT_TOKEN = localStorage.getItem('token')
+			// return { ...state, token: USER_CURRENT_TOKEN }
+			return state
 	}
 }
+export default reducer

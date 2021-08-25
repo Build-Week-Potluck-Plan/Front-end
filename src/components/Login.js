@@ -6,8 +6,8 @@ import { login } from '../actions/authActions'
 import axios from 'axios'
 //getUser reducer
 const initialCredentials = {
-	username: 'nicco',
-	password: 'nicco1234',
+	username: '',
+	password: '',
 }
 
 const Login = props => {
@@ -21,13 +21,17 @@ const Login = props => {
 	const history = useHistory()
 
 	async function handleSubmit(e) {
-		e.preventDefault()
-		setLoading(true)
-		setError('')
-		props.login(credentials)
+		console.log(props)
+		try {
+			e.preventDefault()
+			await props.login({
+				username: emailRef.current.value,
+				password: passwordRef.current.value,
+			})
+		} catch {
+			setError('Failed to login')
+		}
 		history.push('/')
-
-		setLoading(false)
 	}
 
 	return (
@@ -38,8 +42,8 @@ const Login = props => {
 					{error && <Alert variant='danger'>{error}</Alert>}
 					<Form onSubmit={handleSubmit}>
 						<Form.Group id='email'>
-							<Form.Label>Email</Form.Label>
-							<Form.Control type='email' ref={emailRef} />
+							<Form.Label>Username</Form.Label>
+							<Form.Control type='text' ref={emailRef} />
 						</Form.Group>
 						<Form.Group id='password'>
 							<Form.Label>Password</Form.Label>
@@ -61,9 +65,9 @@ const Login = props => {
 	)
 }
 function mapStateToProps(state) {
+	console.log('l state', state)
 	return {
-		username: state.username,
-		password: state.password,
+		user_id: state.user_id,
 		error: state.error,
 		token: state.token,
 	}

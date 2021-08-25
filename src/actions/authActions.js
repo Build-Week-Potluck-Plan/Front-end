@@ -17,10 +17,8 @@ export const login = props => dispatch => {
 		.post('https://potluck-planner-07.herokuapp.com/api/auth/login', data)
 		.then(res => {
 			console.log(res.data)
-			// localStorage.setItem('token', res.data.token)
+
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data })
-			// setLoading(false)
-			// history.push('/') // after we log in, this will bring us to the dashboard page
 		})
 		.catch(error => {
 			dispatch({ type: LOGIN_FAIL, payload: error.response.data.message })

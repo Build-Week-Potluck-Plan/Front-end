@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logout } from '../actions/authActions'
+import { logout, login } from '../actions/authActions'
 
 import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth'
 
 const Dashboard = props => {
-	console.log(props.email)
+	console.log(props.user_id)
 	const [error, setError] = useState('')
 	const [currentUser, setCurrentUser] = useState()
 	const history = useHistory()
 	useEffect(() => {
 		axiosWithAuth()
-			.get(`users/7`)
+			.get(`users/${props.user_id}`)
 			.then(res => setCurrentUser(res.data))
 			.catch(err => {
 				console.log(err.message)
@@ -60,8 +60,8 @@ const Dashboard = props => {
 const mapStateToProps = state => {
 	console.log('dash state', state)
 	return {
-		email: state.username,
+		user_id: state.user_id,
 	}
 }
 
-export default connect(mapStateToProps, { logout })(Dashboard)
+export default connect(mapStateToProps, { logout, login })(Dashboard)
