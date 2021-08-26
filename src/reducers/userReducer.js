@@ -9,7 +9,15 @@
 //4. add in case ADD_NEW_MEMBER
 //5. add in a default case
 //6. export out reducer
-import { FETCH_SUCCESS, FETCH_FAIL, FETCH_START, SET_USER } from '../actions/userActions'
+import {
+	FETCH_SUCCESS,
+	FETCH_FAIL,
+	FETCH_START,
+	SET_USER,
+	REGISTER_SUCCESS,
+	REGISTER_FAIL,
+	REGISTER_START,
+} from '../actions/userActions'
 
 const initialState = {
 	user: null,
@@ -24,12 +32,29 @@ const reducer = (state = initialState, action) => {
 				error: '',
 				user: null,
 			}
+		case REGISTER_START: {
+			return {
+				...state,
+				isLoading: true,
+				error: null,
+				success: false,
+			}
+		}
 		case FETCH_SUCCESS:
 			return {
 				...state,
 				user: action.payload,
 				isFetching: false,
 			}
+
+		case REGISTER_SUCCESS: {
+			console.log(action.payload)
+
+			return {
+				...state,
+				user: action.payload.user,
+			}
+		}
 		case FETCH_FAIL:
 			return {
 				...state,

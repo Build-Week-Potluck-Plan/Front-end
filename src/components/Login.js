@@ -18,7 +18,7 @@ const Login = props => {
 	const emailRef = useRef()
 	const passwordRef = useRef()
 	// const { login } = useState()
-	const [error, setError] = useState('')
+	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const history = useHistory()
 
@@ -26,16 +26,20 @@ const Login = props => {
 		console.log(props)
 		try {
 			e.preventDefault()
-			await props.login({
+			setError(null) // setting to empty string so we have no error
+			setLoading(true) // in case the user spams the button, this will prevent it from making multiple accounts
+			// await signup(emailRef.current.value, passwordRef.current.value)
+			props.login({
 				username: emailRef.current.value,
 				password: passwordRef.current.value,
 			})
 		} catch {
-			setError('Failed to login')
+			setError(props.error)
 		}
-		history.push('/')
-	}
 
+		error == null && setLoading(false)
+	}
+	props.success && history.push('/')
 	return (
 		<>
 			<Container
@@ -45,7 +49,7 @@ const Login = props => {
 					<Card>
 						<Card.Body>
 							<h2 className='text-center mb-4'>Log in</h2>
-							{error && <Alert variant='danger'>{error}</Alert>}
+							{props.error && <Alert variant='danger'>{props.error}</Alert>}
 							<Form onSubmit={handleSubmit}>
 								<Form.Group id='email'>
 									<Form.Label>Username</Form.Label>
@@ -76,9 +80,10 @@ function mapStateToProps(state) {
 	console.log('l state', state)
 	return {
 		user_id: state.user_id,
-		error: state.error,
+		error: state.authReducer.error,
 		token: state.token,
 		user: state.userReducer.user,
+		success: state.authReducer.success,
 	}
 }
 
