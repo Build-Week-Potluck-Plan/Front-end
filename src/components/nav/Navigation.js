@@ -1,9 +1,9 @@
 import { Container, Navbar, Nav, Image } from 'react-bootstrap'
-import { Switch, Route, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
 import { getUser, fetchFail, setUser } from '../../actions/userActions'
-import { logout, login } from '../../actions/authActions'
+import { login } from '../../actions/authActions'
 
 const Navigation = props => {
 	useEffect(() => {
