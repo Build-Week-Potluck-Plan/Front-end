@@ -27,14 +27,16 @@ const Navigation = props => {
 						/>
 						Potluck
 					</Navbar.Brand>
-					<Nav className='me-auto'>
-						<Nav.Link as={NavLink} to='/create-an-event'>
-							Create an Event
-						</Nav.Link>
-						<Nav.Link as={NavLink} to='/food-list'>
-							Food List
-						</Nav.Link>
-					</Nav>
+					{props.isLoggedIn && (
+						<Nav className='me-auto'>
+							<Nav.Link as={NavLink} to='/create-an-event'>
+								Create an Event
+							</Nav.Link>
+							<Nav.Link as={NavLink} to='/food-list'>
+								Food List
+							</Nav.Link>
+						</Nav>
+					)}
 					<Nav>
 						<Nav.Link as={NavLink} to='/user-profile'>
 							{props.user ? `Profile: ${props.user.username}` : 'login'}
@@ -52,6 +54,7 @@ const mapStateToProps = state => {
 		user: state.userReducer.user,
 		user_id: state.authReducer.user_id,
 		success: state.authReducer.success,
+		isLoggedIn: state.authReducer.isLoggedIn,
 	}
 }
 
