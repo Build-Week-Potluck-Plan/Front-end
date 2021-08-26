@@ -3,47 +3,23 @@ import Signup from './Signup'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Navbar, Nav, Image } from 'react-bootstrap'
 import { Switch, Route, NavLink } from 'react-router-dom'
-import Dashboard from './Dashboard'
+import Profile from './Profile/Profile'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import ForgotPassword from './ForgotPassword'
-import UpdateProfile from './UpdateProfile'
-import CreateAnEvent from './CreateEvent'
-import FoodList from './FoodList'
+import UpdateProfile from './Profile/UpdateProfile'
+import CreateAnEvent from './Events/CreateEvent'
+import FoodList from './Events/FoodList'
 import HomePage from './HomePage'
+import Navigation from './nav/Navigation'
 
 function App() {
 	return (
 		<>
-			<Navbar bg='primary' variant='dark'>
-				<Container>
-					<Navbar.Brand as={NavLink} to='/'>
-						<Image
-							to='/'
-							alt='potluck'
-							src='https://notion-emojis.s3-us-west-2.amazonaws.com/v0/svg-twitter/1f958.svg'
-							style={{ width: '40px', height: '40px', marginRight: '11px' }}
-						/>
-						Potluck
-					</Navbar.Brand>
-					<Nav className='me-auto'>
-						<Nav.Link as={NavLink} to='/create-an-event'>
-							Create an Event
-						</Nav.Link>
-						<Nav.Link as={NavLink} to='/food-list'>
-							Food List
-						</Nav.Link>
-					</Nav>
-					<Nav>
-						<Nav.Link as={NavLink} to='/user-dashboard'>
-							Dashboard
-						</Nav.Link>
-					</Nav>
-				</Container>
-			</Navbar>
+			<Navigation />
 
 			<Switch>
-				<PrivateRoute path='/user-dashboard' component={Dashboard} />
+				<PrivateRoute path='/user-profile' component={Profile} />
 				<PrivateRoute path='/update-profile' component={UpdateProfile} />
 				<Route path='/signup' component={Signup} />
 				<Route path='/login' component={Login} />
