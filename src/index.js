@@ -9,7 +9,7 @@ import logger from 'redux-logger'
 
 import thunk from 'redux-thunk'
 
-import reducer from './reducers/authReducer'
+import reducer from './reducers'
 
 const store = createStore(reducer, applyMiddleware(thunk, logger))
 

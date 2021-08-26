@@ -5,12 +5,18 @@ const initialState = {
 	user_id: null,
 	error: null,
 	isLoading: false,
+	success: false,
 }
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGIN_START: {
-			return { ...state, isLoading: true, error: null }
+			return {
+				...state,
+				isLoading: true,
+				error: null,
+				success: false,
+			}
 		}
 		case LOGIN_SUCCESS: {
 			console.log(action.payload)
@@ -23,17 +29,23 @@ const reducer = (state = initialState, action) => {
 				user_id: action.payload.user_id,
 				isLoading: false,
 				error: null,
+				success: true,
 			}
 		}
 		case LOGIN_FAIL: {
-			return { ...state, error: action.payload, isLoading: false }
+			return {
+				...state,
+				error: action.payload,
+				isLoading: false,
+				success: false,
+			}
 		}
 
 		case LOGOUT: {
 			localStorage.removeItem('token')
 			localStorage.removeItem('id')
 
-			return { ...state, token: null }
+			return initialState
 		}
 		default:
 			const token = localStorage.getItem('token')
