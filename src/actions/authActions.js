@@ -6,6 +6,7 @@ export const LOGIN_START = 'LOGIN_START'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const LOGOUT_TEMP = 'LOGOUT_TEMP'
+
 export const login = props => dispatch => {
 	console.log('lact', props)
 	const data = {

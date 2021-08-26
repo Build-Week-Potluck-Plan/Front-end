@@ -18,6 +18,7 @@ const reducer = (state = initialState, action) => {
 				success: false,
 			}
 		}
+
 		case LOGIN_SUCCESS: {
 			console.log(action.payload)
 			localStorage.setItem('token', action.payload.token)
@@ -32,6 +33,7 @@ const reducer = (state = initialState, action) => {
 				success: true,
 			}
 		}
+
 		case LOGIN_FAIL: {
 			return {
 				...state,
