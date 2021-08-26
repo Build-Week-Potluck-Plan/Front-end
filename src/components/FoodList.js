@@ -90,11 +90,6 @@ export default function FoodList(props) {
                         <Button variant="primary" type="submit" style={{justifyContent: 'center', marginTop: '30px'}}>Submit</Button>
                     </Form.Group>
 
-                    {/* <div className="submit">
-                        <button>submit</button>
-
-                    </div> */}
-
                 </Form>
 
             </Container>
