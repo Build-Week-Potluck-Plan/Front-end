@@ -18,7 +18,7 @@ const Login = props => {
 	const emailRef = useRef()
 	const passwordRef = useRef()
 	// const { login } = useState()
-	const [error, setError] = useState('')
+	const [error, setError] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const history = useHistory()
 
@@ -26,7 +26,7 @@ const Login = props => {
 		console.log(props)
 		try {
 			e.preventDefault()
-			setError('') // setting to empty string so we have no error
+			setError(null) // setting to empty string so we have no error
 			setLoading(true) // in case the user spams the button, this will prevent it from making multiple accounts
 			// await signup(emailRef.current.value, passwordRef.current.value)
 			props.login({
@@ -36,6 +36,8 @@ const Login = props => {
 		} catch {
 			setError(props.error)
 		}
+
+		error == null && setLoading(false)
 	}
 	props.success && history.push('/')
 	return (
