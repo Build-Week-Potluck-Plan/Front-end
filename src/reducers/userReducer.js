@@ -15,7 +15,6 @@ import {
 	FETCH_START,
 	SET_USER,
 	REGISTER_SUCCESS,
-	REGISTER_FAIL,
 	REGISTER_START,
 } from '../actions/userActions'
 
