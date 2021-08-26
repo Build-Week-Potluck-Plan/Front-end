@@ -1,122 +1,98 @@
-// import React, { useState, useEffect } from 'react';
+
 import FromPropertyDescriptor from 'es-abstract/5/FromPropertyDescriptor';
-import { Card, Container, Form } from 'react-bootstrap';
+import { Card, Container, Form, Button } from 'react-bootstrap';
 import './FoodList.css'
-// import { appetizers } from './ListItems/appetizers';
-// import { entrees } from './ListItems/entrees';
-// import { desserts } from './ListItems/desserts';
-// import { drinks } from './ListItems/drinks';
-// import { alcohol } from './ListItems/alcohol';
-
-
-// const initialFoodValues = {
-//     //Appetizers
-//     stuffpeppers: '',
-//     buffalowings: '',
-//     artichokedip: '',
-//     shrimpcocktail: '',
-
-//     //Entrees
-//     bakedziti: '',
-//     ribs: '',
-//     orozosalad: '',
-//     pulledpork: '',
-
-//     //Desserts
-//     cheesecake: '',
-//     redvelvet: '',
-//     fruitsalad: '',
-//     applepie: '',
-
-//     //Drinks
-//     soda: '',
-//     icedtea: '',
-//     smoothie: '',
-//     lemonwater: '',
-
-//     //Alcholic drinks
-//     maragritas: '',
-//     sangira: '',
-//     mimosas: '',
-//     winecooler: '',
-// }
 
 
 
-export default function FoodList() {
 
+
+export default function FoodList(props) {
+
+    const { values, update, submit } = props;
+
+    const onSubmit = evt => {
+
+        evt.preventDefault();
+
+        submit();
+    }
 
 
     return (
-        <Container>
-            Make a Food List Test
+        <>
+            <Container>
+                Make a Food List Test
 
-            <Form>
+                <Form onSubmit={onSubmit}>
 
-                <div className="buttonHeader">
-                    <h2>What will you bring?</h2>
-                </div>
-
-                <div className="radioButtons">
-                    <label> Appetizers
-                        <input
-                            type="radio"
-                            name="appetizers"
-                        />
-                    </label>
-
-                    <label> Entrees
-                        <input
-                            type="radio"
-                            name="entrees"
-                        />
-                    </label>
-
-                    <label> Dessert
-                        <input
-                            type="radio"
-                            name="dessert"
-                        />
-                    </label>
-
-                    <label> Non-Alcoholic Drinks
-                        <input
-                            type="radio"
-                            name="drinks"
-                        />
-                    </label>
-
-                    <label> Alcoholic Drinks
-                        <input
-                            type="radio"
-                            name="alcohol"
-                        />
-                    </label>
-                </div>
-
-                {/* <div className="textHeader">
-                    <h2>Specify what you are bringing</h2>
-                </div>
-
-                <div className="textBox">
-                <label> 
-                    <input 
-                    type="text"
-                    name="description"
-                    />
-                </label>
-                </div> */}
+                    <div className="buttonHeader">
+                        <h2>What will you bring?</h2>
+                    </div>
 
 
 
-                <Form.Group className="textBox">
-                    <Card.Title>
-                        <Card.Text style={{fontsize:'25px',}}>Specify what you are bringing</Card.Text>
-                    </Card.Title>
-                    <Form.Control type="text" placeholer="Enter dish here" />
-                </Form.Group>
-            </Form>
+                    <div className="radioButtons">
+                        <div className="rowOne">
+                            <label> Appetizers
+                                <input
+                                    type="radio"
+                                    name="appetizers"
+                                />
+                            </label>
 
-        </Container>
+                            <label> Entrees
+                                <input
+                                    type="radio"
+                                    name="entrees"
+                                />
+                            </label>
+
+
+                            <label> Dessert
+                                <input
+                                    type="radio"
+                                    name="dessert"
+                                />
+                            </label>
+                        </div>
+
+                        <div className="rowTwo">
+                            <label> Non-Alcoholic Drinks
+                                <input
+                                    type="radio"
+                                    name="drinks"
+                                />
+                            </label>
+
+
+                            <label> Alcoholic Drinks
+                                <input
+                                    type="radio"
+                                    name="alcohol"
+                                />
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <Form.Group className="textBox">
+                        <Card.Title>
+                            <Card.Text style={{ fontsize: '25px', }}>Specify what you are bringing</Card.Text>
+                        </Card.Title>
+                        <Form.Control type="text" placeholer="Enter dish here" />
+                    </Form.Group>
+
+
+                    <Form.Group>
+
+                        <Button variant="primary" type="submit" style={{justifyContent: 'center', marginTop: '30px'}}>Submit</Button>
+                    </Form.Group>
+
+                </Form>
+
+            </Container>
+        </>
     )
 }
