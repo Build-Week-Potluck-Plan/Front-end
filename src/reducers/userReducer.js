@@ -17,6 +17,8 @@ import {
 	REGISTER_SUCCESS,
 	REGISTER_FAIL,
 	REGISTER_START,
+	UPDATE_SUCCESS,
+	UPDATE_FAIL,
 } from '../actions/userActions'
 
 const initialState = {
@@ -55,7 +57,22 @@ const reducer = (state = initialState, action) => {
 				user: action.payload.user,
 			}
 		}
+		case UPDATE_SUCCESS: {
+			console.log(action.payload)
+
+			return {
+				...state,
+				user: action.payload.user,
+			}
+		}
 		case FETCH_FAIL:
+			return {
+				...state,
+				error: action.payload,
+				isFetching: false,
+				user: null,
+			}
+		case UPDATE_FAIL:
 			return {
 				...state,
 				error: action.payload,

@@ -6,6 +6,7 @@ const initialState = {
 	error: null,
 	isLoading: false,
 	success: false,
+	isLoggedIn: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +17,7 @@ const reducer = (state = initialState, action) => {
 				isLoading: true,
 				error: null,
 				success: false,
+				isLoggedIn: false,
 			}
 		}
 
@@ -31,6 +33,7 @@ const reducer = (state = initialState, action) => {
 				isLoading: false,
 				error: null,
 				success: true,
+				isLoggedIn: true,
 			}
 		}
 
@@ -40,6 +43,7 @@ const reducer = (state = initialState, action) => {
 				error: action.payload,
 				isLoading: false,
 				success: false,
+				isLoggedIn: false,
 			}
 		}
 
