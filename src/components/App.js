@@ -17,7 +17,6 @@ function App() {
 	return (
 		<>
 			<Navigation />
-
 			<Switch>
 				<PrivateRoute path='/user-profile' component={Profile} />
 				<PrivateRoute path='/update-profile' component={UpdateProfile} />
@@ -26,17 +25,8 @@ function App() {
 				<Route path='/forgot-password' component={ForgotPassword} />
 				<Route exact path='/' component={HomePage} />
 				<Route path='/food-list' component={FoodList} />
-				<Route path='/create-an-event' component={CreateAnEvent} />
+				<PrivateRoute path='/create-an-event' component={CreateAnEvent} />
 			</Switch>
-
-			{/* <Container 
-          className='d-flex align-items-center justify-content-center'
-          style={{minHeight: '100vh'}}
-        > */}
-			{/* this makes sure that it will always be 400px, the wider it gets, it wont go over 400, and smaller adds padding to the sides */}
-			{/* <div className='w-100' style={{ maxWidth: '400px' }}>  */}
-			{/* </div>
-        </Container> */}
 		</>
 	)
 }
