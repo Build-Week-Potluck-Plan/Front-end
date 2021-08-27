@@ -11,7 +11,10 @@ import React, { useState, useEffect } from 'react';
 
 //arrays for date and time
 const day = [];
-for(let i=1;i<32;i++){
+for(let i=0;i<10;i++){
+  day.push(`0${i}`)
+}
+for(let i=10;i<32;i++){
     day.push(`${i}`)
 }
 
@@ -27,7 +30,7 @@ for(let i=1;i<13;i++){
 
 const minutes = [];
 for(let i=0;i<10;i++){
-    minutes.push(`${i}`)
+    minutes.push(`0${i}`)
 }
 for(let i=10;i<60;i++){
     minutes.push(`${i}`)
@@ -37,7 +40,7 @@ for(let i=10;i<60;i++){
 const schema = yup.object().shape({
     title: yup.string().required('title is required').min('2', 'your title must be at least 2 characters'),
     description: yup.string(),
-    month: yup.string().required('month is required').oneOf(['1','2','3','4','5','6','7','8','9','10','11','12'], 'you must select a month'),
+    month: yup.string().required('month is required').oneOf(['01','02','03','04','05','06','07','08','09','10','11','12'], 'you must select a month'),
     day: yup.string().required('day is required').oneOf(day, 'you must select a day'),
     year: yup.string().required('year is required').oneOf(year, 'you must select a year'),
     hour: yup.string(),
@@ -77,7 +80,6 @@ export default function CreateAnEvent() {
             .catch(err => setErrors({...errors, [name]: err.errors[0]}))
     }
     
-    
     //function that handles form update upon changes made
     const change = event => {
         const { value, name } = event.target;
@@ -98,20 +100,16 @@ export default function CreateAnEvent() {
         const newEvent = {
             title: form.title,
             description: form.description,
-            month: form.month,
-            day: form.day,
-            year: form.year,
+            date: form.month+'/'+form.day+'/'+form.year,
             time: form.hour+':'+form.minutes+form.ampm+form.zone,
             location: form.location,
         } 
-        
-        setShow(true);
-        console.log(newEvent);
 
-        axios.post(``, newEvent)
+        axios.post(`https://potluck-planner-07.herokuapp.com/api/events/`, newEvent)
                 .then(res => {
                 setEvents([res.data, ...events])
-                setForm(emptyForm)
+                setForm(emptyForm);
+                setShow(true);
                 })
                 .catch(err => {
                     console.error('uh-oh, there was an error sending your order',err)
@@ -122,6 +120,7 @@ export default function CreateAnEvent() {
     const clicky = () => {
         setShow(false)
     }
+
 
     ////////////////////////////////////RETURN STATEMENT///////////////////////////////////////////////
 
@@ -159,29 +158,29 @@ export default function CreateAnEvent() {
              <Form.Group className="mb-3">
                <Form.Label>Date</Form.Label>
                  <Row>
-                   <Col>
+                   <Col xs="auto">
                      <Form.Label column="sm" sm={2}>Month</Form.Label>
                        <Form.Select size="sm"
                                     name="month"
                                     value={form.month}
                                     onChange={change}>
                            <option>*select a month*</option>
-                           <option value="1">January</option>
-                           <option value="2">February</option>
-                           <option value="3">March</option>
-                           <option value="4">April</option>
-                           <option value="5">May</option>
-                           <option value="6">June</option>
-                           <option value="7">July</option>
-                           <option value="8">August</option>
-                           <option value="9">September</option>
+                           <option value="01">January</option>
+                           <option value="02">February</option>
+                           <option value="03">March</option>
+                           <option value="04">April</option>
+                           <option value="05">May</option>
+                           <option value="06">June</option>
+                           <option value="07">July</option>
+                           <option value="08">August</option>
+                           <option value="09">September</option>
                            <option value="10">October</option>
                            <option value="11">November</option>
                            <option value="12">December</option>
                        </Form.Select>
                        {errors.month}
                    </Col>
-                   <Col>
+                   <Col xs="auto">
                     <Form.Label column="sm" sm={2}>Day</Form.Label>
                       <Form.Select size="sm"
                                    name="day"
@@ -193,7 +192,7 @@ export default function CreateAnEvent() {
                       </Form.Select>
                       {errors.day}
                    </Col>
-                   <Col>
+                   <Col xs="auto">
                     <Form.Label column="sm" sm={2}>Year</Form.Label>
                       <Form.Select size="sm"
                                    name="year"
@@ -209,7 +208,7 @@ export default function CreateAnEvent() {
              </Form.Group>
 
            {/* time input */}
-           <Form.Group>
+           <Form.Group className="mb-3">
                <Form.Label>Time</Form.Label>
                  <Row>
                    <Col xs="auto">
@@ -234,7 +233,7 @@ export default function CreateAnEvent() {
                      </Form.Select>
                    </Col>
 
-                   <Col xs={2}>
+                   <Col xs="auto">
                      <Form.Select size="sm"
                                   name="ampm"
                                   value={form.ampm}
@@ -245,7 +244,7 @@ export default function CreateAnEvent() {
                      </Form.Select>
                    </Col>
 
-                   <Col xs={3}>
+                   <Col xs="auto">
                      <Form.Select size="sm"
                                   name="zone"
                                   value={form.zone}
@@ -259,10 +258,9 @@ export default function CreateAnEvent() {
                    </Col>
                  </Row>
            </Form.Group>
-           <br></br>
 
            {/* location input */}
-           <Form.Group>
+           <Form.Group className="mb-3">
              <Form.Label>Location</Form.Label>
                <Form.Control type="text" 
                              placeholder="*enter the location of your party here*"
@@ -273,8 +271,8 @@ export default function CreateAnEvent() {
            {errors.location}
            
            {/* Submit Button */}
-           <br></br>
-           <Form.Group style={{display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}>
+           <Form.Group style={{display: 'flex', justifyContent: 'space-between', alignItems: 'baseline'}}
+                       className="mb-3">
              <Button variant="primary" 
                      type="submit"
                      disabled={disabled}>Create Event</Button>

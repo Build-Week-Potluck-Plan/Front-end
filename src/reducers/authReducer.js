@@ -6,6 +6,7 @@ const initialState = {
 	error: null,
 	isLoading: false,
 	success: false,
+	isLoggedIn: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,8 +17,10 @@ const reducer = (state = initialState, action) => {
 				isLoading: true,
 				error: null,
 				success: false,
+				isLoggedIn: false,
 			}
 		}
+
 		case LOGIN_SUCCESS: {
 			console.log(action.payload)
 			localStorage.setItem('token', action.payload.token)
@@ -30,14 +33,17 @@ const reducer = (state = initialState, action) => {
 				isLoading: false,
 				error: null,
 				success: true,
+				isLoggedIn: true,
 			}
 		}
+
 		case LOGIN_FAIL: {
 			return {
 				...state,
 				error: action.payload,
 				isLoading: false,
 				success: false,
+				isLoggedIn: false,
 			}
 		}
 

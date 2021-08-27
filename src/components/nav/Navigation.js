@@ -1,9 +1,9 @@
 import { Container, Navbar, Nav, Image } from 'react-bootstrap'
-import { Switch, Route, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useEffect } from 'react'
 import { getUser, fetchFail, setUser } from '../../actions/userActions'
-import { logout, login } from '../../actions/authActions'
+import { login } from '../../actions/authActions'
 
 const Navigation = props => {
 	useEffect(() => {
@@ -27,17 +27,19 @@ const Navigation = props => {
 						/>
 						Potluck
 					</Navbar.Brand>
-					<Nav className='me-auto'>
-						<Nav.Link as={NavLink} to='/create-an-event'>
-							Create an Event
-						</Nav.Link>
-						<Nav.Link as={NavLink} to='/food-list'>
-							Food List
-						</Nav.Link>
-					</Nav>
+					{props.isLoggedIn && (
+						<Nav className='me-auto'>
+							<Nav.Link as={NavLink} to='/create-an-event'>
+								Create an Event
+							</Nav.Link>
+							<Nav.Link as={NavLink} to='/food-list'>
+								Food List
+							</Nav.Link>
+						</Nav>
+					)}
 					<Nav>
 						<Nav.Link as={NavLink} to='/user-profile'>
-							{props.user ? `Profile: ${props.user.username}` : 'login'}
+							{props.user ? `Profile: ${props.user.username}` : 'Login'}
 						</Nav.Link>
 					</Nav>
 				</Container>
@@ -52,6 +54,7 @@ const mapStateToProps = state => {
 		user: state.userReducer.user,
 		user_id: state.authReducer.user_id,
 		success: state.authReducer.success,
+		isLoggedIn: state.authReducer.isLoggedIn,
 	}
 }
 

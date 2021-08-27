@@ -1,7 +1,13 @@
-// import axios from 'axios'
+import axios from 'axios'
 import axiosWithAuth from '../utils/axiosWithAuth'
 
 export const FETCH_USER = 'FETCH_USER'
+export const REGISTER_START = 'REGISTER_START'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_FAIL = 'REGISTER_FAIL'
+export const UPDATE_SUCCESS = 'UPDATE_SUCCESS'
+
+export const UPDATE_FAIL = 'UPDATE_FAIL'
 
 export const getUser = props => {
 	console.log('lact', props)
@@ -20,7 +26,46 @@ export const getUser = props => {
 		// return { type: LOGIN }
 	}
 }
+export const register = props => dispatch => {
+	console.log('regi', props)
+	const user = {
+		email: props.email,
+		name: props.name,
+		username: props.username,
+		password: props.password,
+	}
+	dispatch({ type: REGISTER_START })
+	axios
+		.post('https://potluck-planner-07.herokuapp.com/api/auth/register', user)
+		.then(res => {
+			console.log(res.data)
 
+			dispatch({ type: REGISTER_SUCCESS, payload: res.data })
+		})
+		.catch(error => {
+			dispatch({ type: REGISTER_FAIL, payload: error.response.data.message })
+		})
+}
+export const updateUser = props => dispatch => {
+	console.log('updat', props)
+	const user = {
+		email: props.email,
+		name: props.name,
+		username: props.username,
+		password: props.password,
+	}
+
+	axiosWithAuth()
+		.put(`/users/${props.user_id}`, user)
+		.then(res => {
+			console.log(res.data)
+
+			dispatch({ type: UPDATE_SUCCESS, payload: res.data })
+		})
+		.catch(error => {
+			dispatch({ type: UPDATE_FAIL, payload: error.response.data.message })
+		})
+}
 export const FETCH_START = 'FETCH_START'
 export const fetchStart = () => {
 	return { type: FETCH_START }
