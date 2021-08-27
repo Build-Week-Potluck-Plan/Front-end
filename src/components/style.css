@@ -13,7 +13,7 @@
 
 
 .bottomCard {
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
 }
 @media screen and (max-width: 519px) {
@@ -32,6 +32,6 @@
   @media screen and (min-width: 1400px) {
 
     .bottomImg {
-      width: 46.3%;
+      width: 53.5%;
     }
   }
