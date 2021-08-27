@@ -1,0 +1,27 @@
+.topCard {
+    flex-direction: row;
+    align-items: center;
+}
+@media screen and (max-width: 519px) {
+
+    .topCard {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
+  }
+
+
+.bottomCard {
+    flex-direction: row;
+    align-items: center;
+}
+@media screen and (max-width: 519px) {
+
+    .bottomCard {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+    }
+  }
