@@ -39,7 +39,7 @@ const Navigation = props => {
 					)}
 					<Nav>
 						<Nav.Link as={NavLink} to='/user-profile'>
-							{props.user ? `Profile: ${props.user.username}` : 'login'}
+							{props.user ? `Profile: ${props.user.username}` : 'Login'}
 						</Nav.Link>
 					</Nav>
 				</Container>
