@@ -25,4 +25,13 @@
 
     }
   }
-  
+
+  .bottomImg {
+    width: 50%;
+  }
+  @media screen and (min-width: 1400px) {
+
+    .bottomImg {
+      width: 46.3%;
+    }
+  }

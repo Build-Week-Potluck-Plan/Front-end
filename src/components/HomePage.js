@@ -18,7 +18,7 @@ export default function HomePage() {
                 </Card.Body>
             </Card>
             <Card className='bottomCard'>
-                <Card.Img style={{width: '46.40%',}} variant="left" src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2018/11/Dishes_at_Potluck-700x461.jpg" alt='square-charcuterie-board'/>
+                <Card.Img className='bottomImg' variant="left" src="https://253qv1sx4ey389p9wtpp9sj0-wpengine.netdna-ssl.com/wp-content/uploads/2018/11/Dishes_at_Potluck-700x461.jpg" alt='square-charcuterie-board'/>
                 <Card.Body style={{padding: '0.5em 1.2em', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <Card.Title>Create a potluck event!</Card.Title>
                     <Card.Text style={{width: '95%'}}>
